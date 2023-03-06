@@ -1,10 +1,14 @@
 {
-    "1234": {
+    "Facebook": {
         "email": "alonishai@gmail.com",
-        "password": "dE7M%0(+NJWOY8V"
+        "password": "Y7Y!PVlDE2he6n("
     },
-    "5678": {
-        "email": "alonishai@gmail.com",
-        "password": "VuAkM9$YBSlZ!!3"
+    "Gmail.Com": {
+        "email": "shai.aloni.dev@gmail.com",
+        "password": "v%023(7yvksDCn"
+    },
+    "Yahoo.Com": {
+        "email": "shaialoni.dev@yahoo.com",
+        "password": "4))7br0pwcUVQTK"
     }
 }

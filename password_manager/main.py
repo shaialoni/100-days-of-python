@@ -27,7 +27,7 @@ def generate_password():
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
 
-    website = input_website.get()
+    website = input_website.get().title()
     username = input_username.get()
     password = password_entry.get()
     new_data = {
@@ -61,6 +61,24 @@ def save():
             password_entry.delete(0, "end")
 
 
+# ---------------------------- SEARCH FOR PASSWORD -------------------- #
+def find_password():
+    website = input_website.get().title()
+    try:
+        with open("data.json", "r") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showinfo(title="Error", message="You have no passwords saved yet. Add a password and try again!")
+
+    else:
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"Username: {email}\nPassword: {password}")
+        else:
+            messagebox.showinfo(title="Error", message=f"No {website} in data file")
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
@@ -80,8 +98,8 @@ label_password = Label(text="Password", font=("Arial", 14))
 label_password.grid(row=3, column=0)
 
 # Entries
-input_website = Entry(width=35)
-input_website.grid(row=1, column=1, columnspan=2)
+input_website = Entry(width=21)
+input_website.grid(row=1, column=1)
 input_website.focus()
 input_username = Entry(width=35)
 input_username.insert(0, "alonishai@gmail.com")
@@ -90,10 +108,12 @@ password_entry = Entry(width=21)
 password_entry.grid(row=3, column=1)
 
 # Buttons
-generate_button = Button(text="Generate", command=generate_password)
+generate_button = Button(text="Generate Password", command=generate_password)
 generate_button.grid(row=3, column=2)
 add_button = Button(text="Add", width=36, command=save)
 add_button.grid(row=4, column=1, columnspan=2)
+search_button = Button(text="Search", command=find_password, width=13)
+search_button.grid(row=1, column=2)
 
 
 window.mainloop()
