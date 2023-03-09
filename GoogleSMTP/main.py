@@ -28,7 +28,8 @@ google_password = "wlmdfmttiboouvnd"
 import datetime as dt
 import random
 
-if dt.datetime.now().weekday() == 5:
+if dt.datetime.now().weekday() == 2:
+    print("sending")
     with open("quotes.txt") as file:
         quotes = file.readlines()
     with smtplib.SMTP("smtp.gmail.com") as connection:
@@ -36,6 +37,6 @@ if dt.datetime.now().weekday() == 5:
         connection.login(user=my_gmail, password=google_password)
         connection.sendmail(
             from_addr=my_gmail,
-            to_addrs=my_yahoo,
+            to_addrs="4159800114@vtext.com",
             msg=f"Subject:Today's Motivational Quote\n\n{random.choice(quotes)}"
         )

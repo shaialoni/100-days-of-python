@@ -4,13 +4,14 @@ QUESTION_AMOUNT = 10
 QUESTION_TYPE = "boolean"
 params = {
     "amount": QUESTION_AMOUNT,
-    "type": QUESTION_TYPE
+    "type": QUESTION_TYPE,
+    "category": 18
 }
 
 response = requests.get(url="https://opentdb.com/api.php", params=params)
 response.raise_for_status()
 question_data = response.json()["results"]
-print(question_data)
+#print(question_data)
 
 # question_data = [
 #     {
